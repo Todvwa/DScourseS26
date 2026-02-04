@@ -1,16 +1,53 @@
-a04ee-3572e
-24c65-bb357
-2c8eb-adb0a
-ac5d5-c6255
-5c548-ea74b
-6e06c-84c31
-79243-25f79
-96e53-01ce0
-a10c5-b1755
-13d23-ea43e
-b8957-bd000
-9b0fc-aa5d0
-9c056-97132
-527bc-0f179
-c4d26-63fb0
-31229-c2c30
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+
+\title{PS 1}
+\author{Todvwa Dlamini}
+\date{January 2026}
+
+\begin{document}
+
+\maketitle
+
+\section{Understanding Real Outcomes Through Data }
+
+I am a senior double majoring in Economics and Information Science and Technology, 
+and most of my interests sit at the intersection of data, technology, and real-world 
+problems. I am especially interested in healthcare and development, mainly because 
+I have seen how limited resources, weak systems, and poor information flows can shape 
+people’s outcomes long before individual choices even come into play. What draws me 
+to economics is its ability to take these lived realities and turn them into 
+questions that we can study, test, and hopefully improve.
+
+I decided to take this class because I want to be more intentional about how I work 
+with data from start to finish. Although I have used data tools in other courses, I 
+wanted a stronger foundation in reproducible workflows, version control, and clear 
+documentation. Learning tools like Git, GitHub and \LaTeX{} feels important not just 
+for this class, but for the kind of collaborative and transparent work I hope to do 
+in the future.
+
+For my course project, I am interested in exploring how digital capacity and health 
+infrastructure work together to influence health outcomes, particularly in Southern 
+African countries. I am curious whether technology strengthens existing health 
+systems or whether its impact depends on having certain foundations already in place. 
+I would like to use panel data to study these relationships over time and across 
+countries, with the goal of asking questions that are empirically grounded and 
+relevant for policy.
+
+After graduation, I plan to work full-time to gain hands-on experience applying 
+economic and data analysis in real-world settings. After a couple of years, I intend 
+to pursue graduate studies in Health Economics to deepen my training and sharpen my 
+research focus. In the long run, I hope to work in research or policy-oriented roles 
+where I can use data and economic analysis to improve health outcomes, especially in 
+resource-constrained settings.
+
+
+
+\section*{Equation}
+
+\begin{equation}
+a^2 + b^2 = c^2
+\end{equation}
+
+
+\end{document}
