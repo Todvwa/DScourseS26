@@ -1,0 +1,34 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+
+\title{PS5}
+\author{Todvwa Dlamini}
+\date{10 March 2026}
+
+\begin{document}
+
+\maketitle
+
+\section*{Web Scraping}
+
+In this assignment, I used data from Wikipedia, which is a list of countries by number of languages. The page has a table with the title of `Number of living languages and speakers' that records the number of languages used in individual countries with other statistics like the number of established and immigrant languages and the number of speakers.
+\bigskip
+
+I find this dataset interesting partly because of my academic background. My second major is Information Science and Technology. Some of the courses I have taken in that field have made me curious about how information systems operate in multilingual environments. Countries with many languages may face higher communication and coordination costs in areas such as education, government services, and digital information access. For example, public services, digital platforms, and information systems may need to support multiple languages, which can increase the complexity of delivering information effectively to the population. Because of this, linguistic diversity can be relevant not only from a cultural perspective but also from an economic and information systems perspective.
+\bigskip
+
+Here are some online sources I referred to:
+\begin{itemize}
+\item \texttt{https://statsandr.com/blog/web-scraping-in-r/\#html-and-css}
+\item \texttt{https://valeriehase-digital-information-flow-via-css.share.connect
+.posit.cloud/web-scraping-in-r.html}
+\item Wickham, H. \& Grolemund, G. (2017). \textit{R for Data Science}. Section on data import.
+\end{itemize}
+
+\pagebreak
+
+\section*{API Access}
+
+In this part of the assignment, I accessed taxi trip data from the New York City Taxi and Limousine Commission through the NYC Open Data API using the jsonlite package in R. I often use ride-sharing services like Uber to get around, and I have noticed that prices tend to be higher at certain times of the day or week. Because of this, I was interested in looking at the NYC taxi trip dataset to analyze ride demand patterns by hour of the day. Since each row in the dataset represents a completed trip, demand can be approximated by counting the number of trips occurring at different times. This allows us to observe typical urban transportation patterns, such as higher ride activity during commuting hours and late-night periods. In addition to jsonlite, I used the dplyr and lubridate packages to manipulate the data and extract time-related variables.
+
+\end{document}
