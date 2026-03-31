@@ -1,0 +1,88 @@
+\documentclass[12pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{setspace}
+\usepackage{amsmath, amssymb}
+\usepackage{booktabs}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{tabularray}
+\usepackage{siunitx}
+\usepackage[normalem]{ulem}
+\usepackage{array}
+\usepackage{caption}
+\usepackage{threeparttable}
+\usepackage{hyperref}
+\usepackage{enumitem}
+
+\UseTblrLibrary{booktabs}
+\UseTblrLibrary{siunitx}
+
+\newcommand{\tinytableTabularrayUnderline}[1]{\underline{#1}}
+\newcommand{\tinytableTabularrayStrikeout}[1]{\sout{#1}}
+\NewTableCommand{\tinytableDefineColor}[3]{\definecolor{#1}{#2}{#3}}
+
+\captionsetup[table]{skip=6pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.75em}
+\onehalfspacing
+
+\title{PS7\_Dlamini\\
+\large Econ 5253 -- Spring 2026}
+\author{Todvwa Dlamini}
+\date{March 31, 2026}
+
+\begin{document}
+
+\maketitle
+
+\section*{3. Packages}
+For this problem set, I used the \texttt{mice}, \texttt{modelsummary}, and \texttt{tidyverse} packages in R. The \texttt{mice} package was used for multiple imputation, while \texttt{modelsummary} was used to create publication-style summary and regression tables.
+
+\section*{4. Loading the Data}
+I loaded the \texttt{wages.csv} file into R as a data frame. The dataset contains information on women working in the United States in 1988, including log wages, years of schooling, college graduation status, tenure, age, and marital status.
+
+\section*{5. Dropping Missing \texttt{hgc} or \texttt{tenure} Observations}
+Following the assignment instructions, I dropped all observations with missing values for either \texttt{hgc} or \texttt{tenure}. This ensured that the remaining analysis was based on observations with complete information for those covariates.
+
+\section*{6. Summary Table and Missingness in \texttt{logwage}}
+Table \ref{tab:summary} reports summary statistics for the cleaned dataset.
+
+\begin{table}[H]
+\centering
+\caption{Summary Statistics for the Cleaned Wages Data}
+\label{tab:summary}
+\input{summary_table.tex}
+\end{table}
+
+The \texttt{logwage} variable is missing for approximately 25.1\% of the observations. This is a substantial rate of missingness. Because wage information is often sensitive and because missingness may plausibly depend on observed characteristics such as education, age, or marital status, I do not think the missing values in \texttt{logwage} are most likely Missing Completely At Random (MCAR). A more plausible assumption is that the variable is Missing At Random (MAR), meaning that the probability of missingness is related to observed covariates in the dataset.
+
+\section*{7. Imputation Methods and Regression Results}
+To study the returns to schooling, I estimated the following model:
+\[
+\text{logwage}_i = \beta_0 + \beta_1 \text{hgc}_i + \beta_2 \text{college}_i + \beta_3 \text{tenure}_i + \beta_4 \text{tenure}_i^2 + \beta_5 \text{age}_i + \beta_6 \text{married}_i + \varepsilon_i.
+\]
+
+The coefficient of interest is $\beta_1$, which measures the estimated return to an additional year of schooling. I estimated this model using four approaches: complete cases only, mean imputation, regression imputation, and multiple imputation with \texttt{mice}. Table \ref{tab:regression} reports the regression results.
+
+\begin{table}[H]
+\centering
+\caption{Returns to Schooling Across Imputation Methods}
+\label{tab:regression}
+\input{regression_table.tex}
+\end{table}
+
+The estimated coefficient on \texttt{hgc} is 0.062 in the complete case model, 0.050 under mean imputation, 0.062 under regression imputation, and 0.060 under multiple imputation. The assignment states that the true value of $\hat{\beta}_1$ is 0.093. All four methods therefore underestimate the true return to schooling, though some perform worse than others.
+
+Mean imputation produces the smallest estimate and appears to perform the worst. This is consistent with the known weakness of mean imputation: it reduces the natural variability of the dependent variable and tends to attenuate relationships between variables. As a result, the coefficient on schooling is pulled downward.
+
+The complete case and regression imputation methods produce nearly identical estimates. This suggests that regression imputation preserves much of the structure found in the observed data. However, regression imputation still treats predicted values as if they were observed with certainty, which means it does not fully account for the uncertainty introduced by missing data.
+
+The multiple imputation estimate is slightly below the complete case estimate, but it is still preferable in principle because it incorporates imputation uncertainty across multiple completed datasets. For that reason, even though its point estimate is not dramatically different here, multiple imputation remains the most statistically credible of the four methods. Overall, these results show that simple imputation methods can distort inference, while multiple imputation provides a more defensible way to handle missing outcomes.
+
+\section*{8. Project Progress}
+I am currently working with panel data on African countries to study the relationship between digital infrastructure and health outcomes. My main outcome of interest is under-five mortality, and my explanatory variables include measures such as internet use and mobile subscriptions. So far, I have cleaned and merged several cross-country time-series datasets and estimated fixed effects models to account for persistent differences across countries. I have also begun exploring lag structures to test whether improvements in digital infrastructure have delayed associations with health outcomes.
+
+At this stage, my modeling strategy is centered on panel regressions with country and year fixed effects. I am also considering event-study style specifications and additional robustness checks to better understand the timing and stability of the relationships in the data. The overall goal is to assess whether stronger digital access, especially when paired with health system capacity, is associated with better health outcomes in African countries.
+
+\end{document}
