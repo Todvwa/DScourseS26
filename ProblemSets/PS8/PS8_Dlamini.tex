@@ -1,0 +1,39 @@
+\documentclass[12pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{booktabs}
+
+\title{\textbf{Problem Set 8}}
+\author{Todvwa Dlamini}
+\date{April 7, 2026}
+
+\begin{document}
+
+\maketitle
+\onehalfspacing
+
+\section*{Question 5}
+
+The OLS estimates obtained using the matrix formula closely match the true parameter values. The differences between the estimated and true coefficients are negligible, indicating that the OLS implementation is correct.
+
+\vspace{0.5em}
+
+\section*{Question 7}
+
+The estimates obtained using both the L-BFGS and Nelder-Mead algorithms are identical and closely align with the true parameter values. This confirms that both optimization methods successfully converge to the same solution.
+
+\vspace{0.5em}
+
+\section*{Question 9}
+
+The \texttt{lm()} estimates are nearly identical to the true coefficients, with only minimal deviations due to random error. These results are consistent with all previous methods and confirm correct model implementation.
+
+\vspace{1em}
+
+\section*{Regression Results}
+
+\input{PS8_table.tex}
+
+\end{document}
