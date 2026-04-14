@@ -1,0 +1,85 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{amsmath}
+
+\title{PS 9}
+\author{Todvwa Dlamini}
+\date{14 April 2026}
+
+\begin{document}
+
+\maketitle
+
+\section*{Question 7}
+
+The dimension of the training data is:
+
+\[
+404 \text{ rows} \times 75 \text{ columns}
+\]
+
+The original housing data contains 13 predictor variables. After preprocessing, the number of predictor variables becomes:
+
+\[
+74
+\]
+
+Therefore, the number of additional $X$ variables created relative to the original housing data is:
+
+\[
+61
+\]
+
+
+\section*{Question 8}
+
+The optimal value of $\lambda$ is:
+
+\[
+\lambda = 0.00222
+\]
+
+The in-sample RMSE is:
+
+\[
+\text{RMSE}_{\text{train}} = 0.138
+\]
+
+The out-of-sample RMSE is:
+
+\[
+\text{RMSE}_{\text{test}} = 0.184
+\]
+
+
+\section*{Question 9}
+
+The optimal value of $\lambda$ for the ridge model is:
+
+\[
+\lambda = 0.0373
+\]
+
+The out-of-sample RMSE is:
+
+\[
+\text{RMSE}_{\text{test}} = 0.180
+\]
+
+\section*{Question 10}
+
+\textit{Would you be able to estimate a simple linear regression model on a data set that had more columns than rows?}
+
+\medskip
+For a simple linear regression, a model cannot be estimated using the conventional technique where there are more columns than rows because the design matrix will not be of full rank, hence, the ordinary least squares estimator will not be identifiable. Regularization approaches like the LASSO and ridge regression play an important role when dealing with data sets having many variables relative to the sample size. The inclusion of the penalty term enables the model to be estimated even when dealing with data sets that have a lot of predictor variables.
+
+\medskip
+\textit{Using the RMSE values of each of the tuned models in the previous two questions, comment on where your model stands in terms of the bias-variance tradeoff.}
+
+\medskip
+From the out-of-sample RMSE values in the tuned LASSO and ridge models, it can be seen that the model seems to be operating at a point where the regularization helps reduce variance and minimize the possibility of overfitting without a high level of introduced bias. This can be seen from the close out-of-sample and in-sample RMSE values of the LASSO model after tuning.
+
+\medskip
+In conclusion, the tuned models appear to perform relatively better out of sample. However, the ridge approach has an advantage over the LASSO approach in this context.
+
+\end{document}
