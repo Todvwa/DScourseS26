@@ -1,0 +1,71 @@
+\documentclass{article}
+
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{float}
+\usepackage[margin=1in]{geometry}
+
+\title{Problem Set 10}
+\author{Todvwa Dlamini \\ Econ 5253}
+\date{April 21, 2026}
+
+\begin{document}
+
+\maketitle
+
+\section*{Question 9}
+
+
+\subsection*{Optimal Tuning Parameters}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{ll}
+\toprule
+Model & Optimal Parameters \\
+\midrule
+Logistic Regression & penalty = $1 \times 10^{-10}$ \\
+Decision Tree & cost\_complexity = 0.001, tree\_depth = 15, min\_n = 10 \\
+Neural Network & hidden\_units = 3, penalty = 1 \\
+k-Nearest Neighbors & neighbors = 30 \\
+\bottomrule
+\end{tabular}
+\caption{Optimal tuning parameters for each model}
+\end{table}
+
+\subsection*{Out-of-Sample Performance}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{lccc}
+\toprule
+Model & Accuracy & ROC AUC & Brier Score \\
+\midrule
+Decision Tree & 0.868 & 0.871 & 0.101 \\
+Logistic Regression & 0.853 & 0.904 & 0.103 \\
+Neural Network & 0.851 & 0.904 & 0.147 \\
+k-Nearest Neighbors & 0.843 & 0.890 & 0.109 \\
+\bottomrule
+\end{tabular}
+\caption{Out-of-sample performance comparison}
+\end{table}
+
+\subsection*{How does each algorithm’s out-of-sample performance compare
+with each of the other algorithms?}
+
+Decision tree model demonstrates the highest test set accuracy of 0.868 and hence the best performing model as per the primary assessment metric. This model also provides the lowest Brier score, implying that the predicted probabilities are quite calibrated.
+
+\medskip
+Logistic regression and neural network perform equally well by providing the highest ROC AUC scores of 0.904, demonstrating a superior discrimination between high and low earners. However, the overall classification accuracy of these models is slightly inferior to that achieved by decision trees. In particular, the neural network model has a Brier score indicating poor probability calibration.
+
+\medskip
+The performance of k-nearest neighbors model lags behind those of other models under the given metrics. In general, there appears to be a trade-off between accuracy and rank discrimination. As accuracy was used for model tuning, the decision tree model can be considered optimal.
+
+\subsection*{Note on SVM}
+
+The Support Vector Machine algorithm was not included in the final comparisons due to computation and convergence problems. While tuning the parameters, several error messages stating "line search fails" kept showing up even after several attempts using various parameter sets, implying unstable computation during the tuning process.
+
+\medskip
+Although the training time was lengthy, the algorithm was unable to converge into stable solutions, failing the tuning process. Thus, the SVM algorithm was not considered in the final comparison.
+\end{document}
