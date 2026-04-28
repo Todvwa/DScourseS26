@@ -1,0 +1,257 @@
+\documentclass[12pt]{article}
+ 
+%%%%%%%%%%%%%%%%%% General pagackages
+\usepackage{amssymb,amsmath,amsfonts,eurosym,ulem,graphicx,
+	caption,color,setspace,sectsty,comment,footmisc,
+	pdflscape,subcaption,array, multicol,multirow,tikz, bm,
+        booktabs, rotating, titling}
+\usepackage{enumitem}
+%%%%%%%%%%%%%%%%%%% Encoding
+\usepackage[utf8]{inputenc}
+%%%%%%%%%%%%%%%%%% Margins and Spacing
+\usepackage[left=1.0in,right=1.0in,top=1in,bottom=1in]{geometry}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.5em}
+\usepackage{pdflscape}
+%%%%%%%%%%%%%%%%%% References
+\usepackage[numbers,sort&compress]{natbib}
+\bibliographystyle{unsrtnat}
+%%%%%%%%%%%%%%%%%% Links
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\urlstyle{same} %makes url the same font as text, not courier default
+\newcommand{\doi}[1]{\url{#1}}
+%%%%%%%%%%%%%%%%%% tikz/diagrams
+\usetikzlibrary{arrows,shapes,positioning,intersections,calc}
+%%%%%%%%%%%%%%%%%% table formatting
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\arraybackslash}p{#1}}
+\normalem
+\makeatother
+\usepackage{float}
+%%%%%%%%%%%%%%%%%% Autoreference names
+\renewcommand{\sectionautorefname}{Section}
+\renewcommand{\subsectionautorefname}{Sub-section}
+\renewcommand{\figureautorefname}{Figure}
+\renewcommand{\tableautorefname}{Table}
+\renewcommand{\figureautorefname}{Figure}
+% equation numbering start at 1
+\newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
+%%%%%%%%%%%%%%%%%% Theorem Names
+\newtheorem{prop}{Proposition}
+\newtheorem{definition}{Definition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\newtheorem{result}{Result}
+\newtheorem{assumption}{Assumption}
+\newtheorem{theorem}{Theorem}
+
+%%%%%%%%%%%%%%%%%% Title Information
+%title page single spacing 
+\setstretch{1} 
+%subtitle command
+\newcommand{\subtitle}[1]{\posttitle{\par\end{center}\begin{center}\large#1\end{center}\vskip0.5em}}
+
+\title{Financial Scars: Prior Financial Distress and Risk-Taking Behavior among U.S. Households}
+\subtitle{University of Oklahoma\\Data Science for Economists}
+\author{Todvwa Dlamini}
+\date{\today}
+
+
+\begin{document}
+
+\maketitle
+
+
+
+\newpage
+\setstretch{1.75} 
+ 
+
+\section{Introduction}
+
+Household financial decisions are shaped not only by current economic conditions but also by prior financial experiences. Standard economic theory assumes that individuals make financial decisions by maximizing expected utility under stable preferences. Under this framework, past financial experiences matter only through their effect on wealth and income. Behavioral economics, however, suggests that prior experiences may independently shape future decisions by altering perceptions of risk and uncertainty.
+
+\medskip
+Prospect Theory \citep{kahneman1979prospect} provides an important framework for understanding this process. The theory argues that individuals evaluate outcomes relative to a reference point and that losses impose greater decision weight than equivalent gains. While Prospect Theory has traditionally been applied to framed choices under explicit gambles, less is known about whether real-world financial distress leaves persistent behavioral effects on future financial decisions.
+
+\medskip
+This study examines whether prior financial distress predicts more conservative household financial behavior among U.S. households. Rather than directly testing loss aversion, the study examines whether households that experience financial distress reduce their participation in risky financial assets. This distinction is important because household portfolio decisions represent revealed financial behavior rather than direct experimental choices under risk.
+
+\medskip
+Using data from the Survey of Consumer Finances, I construct a measure of prior financial distress using negative net worth, delinquent debt payments, bankruptcy, and foreclosure. Risk-taking behavior is measured through stock market participation, broader equity participation, and self-reported willingness to take financial risk.
+
+\medskip
+The results show that prior financial distress is associated with lower stock market participation even after controlling for financial resources and demographic characteristics. However, self-reported willingness to take financial risk remains statistically unchanged. This divergence between stated preferences and observed behavior suggests that financial distress may generate behavioral persistence by altering future perceptions of downside risk, reducing willingness to re-engage with uncertain financial assets. These findings contribute to the household finance literature by providing evidence that financial distress may leave persistent behavioral effects among U.S. households.
+
+
+\section{Literature Review}
+
+The foundation of modern behavioral analysis of decision-making under risk originates from
+\citep{kahneman1979prospect} Prospect Theory. In contrast to Expected Utility Theory,
+which assumes that utility is defined over final wealth levels, Prospect Theory argues that
+individuals evaluate outcomes as gains or losses relative to a reference point. This shift in
+framing fundamentally changes how individuals assess risky prospects. A key implication of
+Prospect Theory is loss aversion: the idea that the disutility of losing a given amount is
+greater than the utility of gaining the same amount. Kahneman and Tversky \citep{kahneman1979prospect} show through experimental evidence that individuals are generally risk-averse when facing gains but risk-seeking when facing losses, a phenomenon known as the reflection effect. This asymmetry implies that losses carry greater decision weight than equivalent gains and can shape subsequent financial decisions.
+
+The implications for financial behavior are substantial. Since investment decisions involve
+uncertain gains and losses, loss aversion can influence asset allocation and market participation
+decisions. Households may avoid potentially beneficial investments because the possibility
+of loss is weighted disproportionately relative to expected gains. This behavioral mechanism
+has become central to understanding household financial behavior under uncertainty.
+
+Building on Prospect Theory, financial economists have explored how loss aversion manifests
+in real-world markets. Hwang and Satchell \citep{hwang2010loss} examine the extent of loss aversion among investors in financial markets and find that loss aversion may be stronger in actual market environments than laboratory experiments suggest. Their findings challenge the widely cited loss aversion coefficient of approximately 2.25 by showing that real financial stakes can intensify behavioral responses. Importantly, Hwang and Satchell \citep{hwang2010loss} also demonstrate that loss aversion varies across market conditions. They find that investor sensitivity to losses changes between bull and bear market periods, suggesting that behavioral responses to losses are context-dependent rather than fixed.
+
+Yang \citep{yang2019loss} further develops the role of loss aversion in financial markets by connecting it to several persistent financial puzzles. One example is the stock market participation puzzle, where many households avoid equity investment despite favorable long-run returns. Vissing-J{\o}rgensen \cite{vissing2002towards} documents substantial heterogeneity in household portfolio choice and shows that stock market participation remains uneven across households, even after accounting for wealth and income differences. Yang \citep{yang2019loss} argues that loss aversion helps explain this behavior because households may overweight short-term downside risk relative to long-term gains. Dimmock and Kouwenberg \cite{dimmock2010loss} provide direct evidence that households with stronger loss-averse tendencies are less likely to participate in equity markets, reinforcing the importance of behavioral preferences in household portfolio choice. Similarly, loss aversion contributes to the disposition effect, where investors sell winning assets too early while holding losing assets too long. Together, these studies establish that loss aversion remains
+an important framework for understanding household financial behavior and market outcomes.
+
+While Prospect Theory explains how individuals weigh gains and losses, an important
+unanswered question is whether prior financial distress alters subsequent financial behavior.
+Household financial decisions are often path-dependent, meaning previous financial experiences
+may shape future decisions under uncertainty. Financial distress may create behavioral
+persistence by increasing sensitivity to downside risk and reducing willingness to re-engage
+with uncertain financial assets.
+
+Households experiencing debt delinquency, negative net worth, or bankruptcy may become
+more financially conservative in subsequent investment decisions, reducing participation in
+risky financial assets. This mechanism is consistent with the broader behavioral predictions
+of Prospect Theory but has received less direct empirical attention in household finance.
+
+Existing literature largely treats loss aversion as a stable behavioral parameter rather than
+examining how real-world financial distress may shape subsequent household financial behavior.
+This study addresses that gap by examining whether observable financial distress proxies are
+associated with lower participation in risky financial markets among U.S. households. Unlike
+experimental studies, this approach captures real-world financial behavior under naturally
+occurring economic conditions. By linking financial distress to observable investment behavior,
+the analysis provides new evidence on how prior financial hardship may shape subsequent
+household financial decision-making.
+
+
+\section{Data}
+
+This study uses household-level data from the Survey of Consumer Finances (SCF), a nationally representative cross-sectional survey conducted by the Board of Governors of the Federal Reserve System \citep{federalreserve2022scf}. The SCF is widely regarded as the benchmark dataset for household balance sheet analysis in the United States. The SCF provides detailed information on household balance sheets, income, debt obligations, asset ownership, and financial decision-making behavior, making it well-suited for examining the relationship between financial distress and household financial behavior. The analytical sample consists of 22,975 households after restricting the data to observations with complete information on the variables of interest. Since the SCF employs a complex survey design, all empirical specifications incorporate household sampling weights to preserve national representativeness.
+
+\medskip
+The primary outcome variable is \textit{stock participation}, a binary indicator equal to one if a household owns stocks and zero otherwise. This measure serves as the principal behavioral proxy for financial risk-taking, as stock ownership represents direct exposure to uncertain returns. Two alternative outcome variables are used for robustness: \textit{equity participation}, which captures broader ownership of equity-based financial assets, and \textit{willingness to take financial risk}, a self-reported measure of financial risk tolerance. The key explanatory variable is a constructed \textit{prior-loss proxy}, designed to approximate recent financial distress. Because the SCF does not directly observe prior loss events, financial distress is proxied using indicators of negative net worth, late debt payments, bankruptcy in the past five years, and foreclosure in the past five years. A household is classified as experiencing prior loss if any of these distress conditions are present.
+
+\medskip
+To account for confounding factors associated with portfolio participation, the analysis includes a set of demographic and financial controls. Demographic controls include age, age squared, education, marital status, number of children, labor force participation, and race. Financial controls include the natural logarithm of household income, the inverse hyperbolic sine transformation of net worth, and the natural logarithm of household debt. Table~\ref{tab:descriptive_stats} presents summary statistics for the main variables. Approximately 29.1\% of households report stock ownership, while 16.5\% meet the criteria for the prior-loss proxy. Households classified under the prior-loss proxy exhibit substantially lower median income and median net worth, suggesting a meaningful distinction in financial conditions.
+
+\input{descriptive_statistics.tex}
+
+\section{Methodology}
+
+The empirical strategy estimates the relationship between prior financial distress and household risk-taking behavior using survey-weighted logistic regression models. The use of logistic regression is appropriate given the binary nature of the main dependent variable, stock ownership.
+
+\medskip
+The baseline specification is given by:
+
+\begin{equation}
+Pr(Y_i = 1) = F(\beta_0 + \beta_1 PriorLoss_i + \epsilon_i)
+\end{equation}
+
+where $Y_i$ denotes stock ownership for household $i$, $PriorLoss_i$ is the financial distress proxy, and $F(\cdot)$ is the logistic cumulative distribution function.
+
+\medskip
+To account for observable heterogeneity across households, the preferred specification augments the baseline model with demographic and financial controls:
+
+\begin{equation}
+Pr(Y_i = 1) = F(\beta_0 + \beta_1 PriorLoss_i + X_i'\beta + Z_i'\gamma + \epsilon_i)
+\end{equation}
+
+where $X_i$ represents demographic characteristics and $Z_i$ captures household financial conditions. Including demographic and financial controls is consistent with the broader household finance literature, which emphasizes that financial literacy, income, and wealth are key determinants of household financial decision-making \cite{lusardi2014economic}.
+
+\medskip
+The empirical strategy relies on cross-sectional variation in household financial distress status to estimate associations between prior distress and household financial behavior. To further explore mechanisms underlying the aggregate prior-loss effect, the composite prior-loss proxy is decomposed into its individual components:
+
+\begin{equation}
+Pr(Y_i = 1) = F(\beta_0 + \beta_1 LatePayment_i + \beta_2 Bankruptcy_i + \beta_3 Foreclosure_i + X_i'\beta + Z_i'\gamma + \epsilon_i)
+\end{equation}
+
+This decomposition permits identification of heterogeneous associations across different forms of financial distress. All models are estimated using survey weights provided by the SCF to ensure nationally representative inference. Standard errors are robust to heteroskedasticity. The empirical framework is informed by behavioral theories of decision-making under uncertainty, particularly Prospect Theory \citep{kahneman1979prospect}, which suggests that prior losses may increase sensitivity to future downside risk. This study does not directly estimate loss aversion parameters but instead examines whether prior financial distress predicts more conservative revealed financial behavior. Under this framework, U.S. households experiencing financial distress exhibit lower stock market participation
+
+
+\section{Results}
+
+Figure \ref{fig:stock_priorloss} presents the unconditional relationship between prior financial distress and stock market participation. Households without a prior-loss history exhibit substantially higher stock ownership rates, with approximately 32 percent participating in the stock market compared to only 12 percent among households classified under the prior-loss proxy. This 20 percentage-point gap provides preliminary descriptive evidence consistent with the central hypothesis that prior financial distress is associated with lower participation in risky financial assets.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{stock_participation_by_loss_proxy.png}
+\caption{Stock Market Participation by Prior Financial Distress}
+\label{fig:stock_priorloss}
+\end{figure}
+
+Table~\ref{tab:econometric_results} reports the main econometric results from the survey-weighted logistic regressions.Alternative outcome specifications are reported in Appendix Table~\ref{tab:alt_results}.
+
+
+\input{econometric_results.tex}
+
+
+The baseline specification in Column (1) reports an odds ratio of 0.398 on the prior-loss proxy, statistically significant at the 1 percent level. This implies that households experiencing financial distress exhibit approximately 60.2 percent lower odds of stock ownership relative to households without recent distress.
+
+\medskip
+After introducing demographic controls in Column (2), the estimated odds ratio rises to 0.490 but remains highly statistically significant. This implies approximately 51 percent lower odds of stock ownership among financially distressed households. Although the magnitude attenuates, the persistence of statistical significance indicates that prior financial distress independently predicts lower participation in risky financial markets.
+
+\medskip
+The preferred specification is reported in Column (3), which adds financial controls for household income, net worth, and debt. Under this more demanding specification, the estimated odds ratio is 0.829. This indicates approximately 17.1 percent lower odds of stock ownership, conditional on comparable income, wealth, debt, and demographic characteristics. While the magnitude declines substantially after controlling for financial capacity, the persistence of the effect suggests that prior financial distress influences behavior beyond simple wealth constraints.
+
+\medskip
+The control variables behave largely as expected. Household income and net worth are positively associated with stock market participation, reflecting greater financial capacity to bear investment risk. The coefficient on income remains economically large and statistically significant across specifications, while net worth consistently increases the probability of stock ownership. Education also exhibits a positive gradient, consistent with financial literacy and information advantages documented in prior literature.
+
+\medskip
+To investigate the mechanisms underlying the aggregate prior-loss effect, Column (4) decomposes the prior-loss proxy into its component indicators: late payment behavior, bankruptcy history, and foreclosure history. The results show meaningful heterogeneity across financial distress types. Late payment behavior is associated with significantly lower stock ownership, with an estimated odds ratio of 0.631 ($p < 0.001$), implying approximately 36.9 percent lower odds of stock participation. Bankruptcy exhibits an even stronger negative effect, with an odds ratio of 0.214 ($p < 0.001$), corresponding to roughly 78.6 percent lower odds of stock ownership. By contrast, foreclosure is statistically insignificant, suggesting that not all financial distress events affect future financial risk-taking equally.
+
+\medskip
+These findings imply that the observed aggregate effect of prior financial distress is driven primarily by liquidity stress and severe debt-related disruptions rather than housing-related shocks. This distinction is economically meaningful because it suggests that immediacy and severity of financial hardship may matter more than the specific type of asset loss.
+
+\medskip
+As robustness checks, alternative specifications using broader equity participation and self-reported willingness to take financial risk were estimated. The prior-loss proxy does not significantly predict either broader equity ownership or stated financial risk tolerance. Notably, self-reported willingness to take financial risk remains statistically unchanged, while actual stock market participation declines significantly. This suggests that U.S. households may report stable financial risk preferences while altering actual investment behavior following financial distress. Together, the results are consistent with behavioral theories of decision-making under uncertainty, particularly Prospect Theory, in showing that prior financial distress is associated with more conservative revealed financial behavior.
+
+\section{Conclusion}
+
+This study examined whether prior financial distress predicts more conservative financial behavior among U.S. households. Using nationally representative data from the Survey of Consumer Finances and survey-weighted logistic regression models, the analysis finds consistent evidence that households experiencing recent financial distress are less likely to participate in stock markets. The main findings show that prior financial distress is significantly associated with lower stock ownership, even after controlling for demographic and financial characteristics. Although the magnitude of the association declines once financial controls are introduced, the negative relationship remains statistically significant, suggesting that the effects of financial distress extend beyond immediate resource constraints. This finding is consistent with broader evidence showing that confidence and trust are central determinants of stock market participation, and that adverse experiences may reduce households’ willingness to re-engage with financial markets \cite{guiso2008trust}. The decomposition analysis further shows that this relationship is primarily driven by late payment behavior and bankruptcy, while foreclosure appears less influential. This distinction is economically meaningful because debt delinquency and bankruptcy represent more immediate household financial strain, whereas foreclosure may reflect broader housing market conditions and institutional constraints \cite{mian2015foreclosures}.
+
+\medskip
+An important behavioral insight emerges from the comparison between revealed and stated financial behavior. While stock market participation declines significantly following financial distress, self-reported willingness to take financial risk remains statistically unchanged. This divergence suggests that U.S. households may report stable financial risk preferences while adjusting their actual investment behavior in more conservative ways following financial distress. In this sense, financial distress may leave persistent behavioral scars that shape future financial decision-making. These findings contribute to the household finance and behavioral finance literature by showing that prior financial distress is associated with subsequent reductions in risky asset participation. Rather than directly testing loss aversion, the results are consistent with behavioral theories of decision-making under uncertainty, particularly Prospect Theory, in suggesting that adverse financial experiences may increase sensitivity to future downside risk.
+
+\medskip
+From a policy perspective, the results carry important implications for financial inclusion and household wealth-building in the United States. Traditional financial policy often focuses on improving access to investment markets, but access alone may be insufficient if prior financial hardship creates behavioral barriers to re-entry. Financial recovery programs may therefore benefit from integrating behavioral financial counseling alongside traditional debt relief mechanisms.This is particularly relevant given evidence that financial literacy and financial confidence play important roles in long-term household wealth accumulation \cite{lusardi2014economic}. This has particular relevance for U.S. consumer financial protection frameworks, financial literacy initiatives, and household financial resilience programs.
+
+\medskip
+The study has several limitations. First, the financial distress proxy is constructed from observable indicators and may not fully capture subjective loss experiences or perceived financial hardship. Second, the cross-sectional structure of the SCF limits causal interpretation and prevents direct observation of behavioral adjustment over time. Third, unobserved factors such as financial expectations, financial literacy, or psychological resilience may influence both financial distress and investment behavior.
+
+\medskip
+Future research could extend this framework using panel data to examine how financial behavior evolves after distress events and whether households eventually re-enter risky asset markets. Experimental approaches may also help isolate causal mechanisms by observing how exogenous financial losses influence subsequent financial decision-making. Such work would deepen our understanding of how financial distress shapes long-run wealth accumulation and participation in financial markets.
+
+\newpage
+\appendix
+\section{Appendix}
+
+\begin{table}[H]
+\centering
+\label{tab:appendix_risk_loss}
+\input{risk_by_loss_proxy.tex}
+\end{table}
+
+\begin{table}[H]
+\centering
+\label{tab:appendix_predicted}
+\input{predicted_probabilities_stock.tex}
+\end{table}
+
+\begin{table}[H]
+\centering
+\label{tab:alt_results}
+\input{alternative_outcome_results.tex}
+\end{table}
+
+\newpage
+\bibliography{references}
+
+
+
+
+\end{document}
